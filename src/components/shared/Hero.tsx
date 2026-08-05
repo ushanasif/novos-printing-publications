@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 
-import burger from "../../../public/059a234f-2313-4c20-a47b-39f833dc94ee-removebg-preview.png";
-import mug from "../../../public/df8ad125-4085-403d-8377-9f1c81df0b0b-removebg-preview.png";
+import burger from "../../../public/burger.png";
+import mug from "../../../public/mug.png";
 
 export default function HeroSection() {
   return (

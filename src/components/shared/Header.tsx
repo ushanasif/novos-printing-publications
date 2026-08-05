@@ -13,7 +13,7 @@ import {
   Facebook,
 } from "lucide-react";
 
-import logo from "../../../public/ChatGPT Image Aug 5, 2026, 05_04_36 PM.png";
+import logo from "../../../public/logo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
