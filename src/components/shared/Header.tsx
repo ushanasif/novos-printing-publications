@@ -1,226 +1,167 @@
-
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Menu,
-  X,
-  Phone,
-  Mail,
-  Instagram,
-  Facebook,
-} from "lucide-react";
-
-import logo from "../../../public/logo.png";
+import { Phone, Mail, Facebook, Instagram, Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Printme", href: "/services" },
-  { name: "Pages", href: "/pages" },
   { name: "Shop", href: "/shop" },
-  { name: "Bulk Orders", href: "/bulk-orders" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const drawerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        open &&
-        drawerRef.current &&
-        !drawerRef.current.contains(event.target as Node)
-      ) {
-        setOpen(false);
-      }
-    };
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-      }
-    };
-
-    if (open) {
-      document.body.style.overflow = "hidden";
-      document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener("keydown", handleEscape);
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-      document.removeEventListener(
-        "mousedown",
-        handleClickOutside
-      );
-      document.removeEventListener(
-        "keydown",
-        handleEscape
-      );
-    };
-  }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
-      {/* Top Bar */}
-      <div className="bg-black text-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 text-sm">
-          <p className="hidden lg:block font-medium">
-            Novos Suportes Publicitários, Lda
-          </p>
+    <header className="relative">
+      {/* Background Image */}
+      <div className="relative w-full">
+        <Image
+          src="https://res.cloudinary.com/dvzxjqtub/image/upload/v1786033824/WhatsApp_Image_2026-08-06_at_7.10.15_PM_onaxwv.jpg"
+          alt="NVV Banner"
+          width={1920}
+          height={1080}
+          priority
+          className="h-auto w-full"
+        />
+      </div>
 
-          <div className="ml-auto flex items-center gap-4">
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/15" />
+
+      {/* Header Content */}
+      <div className="absolute inset-0 z-20">
+        {/* Top Bar */}
+        <div className="border-b border-white/20 sticky top-0 z-50">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 text-white">
+            {/* Social */}
+            <div className="flex items-center gap-4">
+              <Link href="#">
+                <Facebook
+                  size={18}
+                  className="transition hover:text-yellow-400"
+                />
+              </Link>
+
+              <Link href="#">
+                <Instagram
+                  size={18}
+                  className="transition hover:text-yellow-400"
+                />
+              </Link>
+            </div>
+
+            <ul className="hidden items-center gap-10 font-semibold uppercase text-white lg:flex">
+              {navLinks.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="relative transition hover:text-yellow-400"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Contact */}
+            <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm">
+              <div className="flex items-center gap-2">
+                <Phone size={14} />
+                <span>+351 920 222 463</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Mail size={14} />
+                <span>info@example.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Navbar */}
+        <nav>
+          <div className="mx-auto flex max-w-7xl items-center justify-between lg:justify-center  px-4 py-5">
+            {/* Desktop Menu */}
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setOpen(true)}
+              className="ml-auto text-white lg:hidden"
+              aria-label="Open Menu"
+            >
+              <Menu size={32} />
+            </button>
+          </div>
+        </nav>
+      </div>
+
+      {/* Mobile Drawer */}
+      <div
+        className={`fixed inset-0 z-[999] lg:hidden transition-all duration-300 ${
+          open ? "visible opacity-100" : "invisible opacity-0"
+        }`}
+      >
+        {/* Overlay */}
+        <div
+          className="absolute inset-0 bg-black/50"
+          onClick={() => setOpen(false)}
+        />
+
+        {/* Drawer */}
+        <div
+          className={`absolute right-0 top-0 h-screen w-2/3 bg-white shadow-xl transition-transform duration-300 ${
+            open ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          {/* Drawer Header */}
+          <div className="flex items-center justify-between border-b p-5">
+            <h3 className="text-lg font-semibold text-black">Menu</h3>
+
+            <button onClick={() => setOpen(false)} aria-label="Close Menu">
+              <X size={28} className="text-black" />
+            </button>
+          </div>
+
+          {/* Navigation */}
+          <ul className="flex flex-col">
+            {navLinks.map((item) => (
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="block border-b px-6 py-4 font-medium uppercase text-black transition hover:bg-gray-100"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Social Icons */}
+          <div className="mt-8 flex justify-center gap-5">
+            <Link href="#">
+              <Facebook size={22} className="text-black hover:text-blue-600" />
+            </Link>
+
+            <Link href="#">
+              <Instagram size={22} className="text-black hover:text-pink-600" />
+            </Link>
+          </div>
+
+          {/* Contact Info */}
+          <div className="mt-8 space-y-4 px-6 text-sm text-gray-600">
             <div className="flex items-center gap-2">
               <Phone size={16} />
-              <span>+351 920222 463</span>
+              <span>+351 920 222 463</span>
             </div>
 
             <div className="flex items-center gap-2">
               <Mail size={16} />
-              <span className="sm:block">
-                info@example.com
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Navbar */}
-      <nav className="bg-[#fbf9f7] border-b">
-        <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <div className="relative h-48 w-45 lg:h-50 lg:w-60">
-              <Image
-                src={logo}
-                alt="NVV Logo"
-                fill
-                sizes="240px"
-                priority
-                className="object-contain"
-              />
-            </div>
-          </Link>
-
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center gap-10">
-            <ul className="flex items-center gap-8 font-semibold uppercase tracking-wide">
-              {navLinks.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="transition-colors duration-200 hover:text-orange-500"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex items-center gap-3">
-              <Link
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition hover:bg-gray-800"
-              >
-                <Facebook size={18} />
-              </Link>
-
-              <Link
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition hover:bg-gray-800"
-              >
-                <Instagram size={18} />
-              </Link>
-            </div>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            className="lg:hidden"
-            aria-label="Open menu"
-          >
-            <Menu size={30} />
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Drawer */}
-      <div
-        className={`fixed inset-0 z-999 lg:hidden transition-all duration-300 ${
-          open
-            ? "visible opacity-100"
-            : "invisible opacity-0"
-        }`}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
-
-        {/* Drawer */}
-        <div
-          ref={drawerRef}
-          className={`absolute right-0 top-0 h-full w-70 bg-white shadow-xl transition-transform duration-300 ${
-            open ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="flex items-center justify-between border-b p-5">
-            <h3 className="text-lg font-semibold">Menu</h3>
-
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              aria-label="Close menu"
-            >
-              <X size={28} />
-            </button>
-          </div>
-
-          <div className="p-5">
-            <ul className="space-y-4">
-              {navLinks.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="block border-b pb-3 font-medium uppercase"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-8 flex gap-3">
-              <Link
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white"
-              >
-                <Facebook size={18} />
-              </Link>
-
-              <Link
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white"
-              >
-                <Instagram size={18} />
-              </Link>
-            </div>
-
-            <div className="mt-8 space-y-3 text-sm text-gray-600">
-              <div className="flex items-center gap-2">
-                <Phone size={16} />
-                <span>0000 - 123 - 456789</span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <Mail size={16} />
-                <span>info@example.com</span>
-              </div>
+              <span>info@example.com</span>
             </div>
           </div>
         </div>
@@ -228,4 +169,3 @@ export default function Header() {
     </header>
   );
 }
-
