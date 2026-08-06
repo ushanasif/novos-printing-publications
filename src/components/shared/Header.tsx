@@ -94,11 +94,12 @@ export default function Header() {
         <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="relative h-50 w-[180px] lg:h-50 lg:w-[240px]">
+            <div className="relative h-48 w-45 lg:h-50 lg:w-60">
               <Image
                 src={logo}
                 alt="NVV Logo"
                 fill
+                sizes="240px"
                 priority
                 className="object-contain"
               />
@@ -151,7 +152,7 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed inset-0 z-[999] lg:hidden transition-all duration-300 ${
+        className={`fixed inset-0 z-999 lg:hidden transition-all duration-300 ${
           open
             ? "visible opacity-100"
             : "invisible opacity-0"
@@ -163,7 +164,7 @@ export default function Header() {
         {/* Drawer */}
         <div
           ref={drawerRef}
-          className={`absolute right-0 top-0 h-full w-[280px] bg-white shadow-xl transition-transform duration-300 ${
+          className={`absolute right-0 top-0 h-full w-70 bg-white shadow-xl transition-transform duration-300 ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >

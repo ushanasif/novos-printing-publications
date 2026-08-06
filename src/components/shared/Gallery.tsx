@@ -47,11 +47,12 @@ export default function GallerySection() {
                 key={index}
                 className="group overflow-hidden bg-white shadow-sm"
               >
-                <div className="relative h-[260px]">
+                <div className="relative h-65">
                   <Image
                     src={item.src}
                     alt={item.title}
                     fill
+                    sizes="260px"
                     className="object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>
@@ -62,22 +63,24 @@ export default function GallerySection() {
           {/* Bottom Row */}
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <div className="group overflow-hidden bg-white shadow-sm">
-              <div className="relative h-[300px] md:h-[400px]">
+              <div className="relative h-75 md:h-100">
                 <Image
                   src="https://res.cloudinary.com/dvzxjqtub/image/upload/v1785953387/4e680714-8264-4d0c-ac9f-efa40da1a109_zjj26x.jpg"
                   alt="Design"
                   fill
+                  sizes="400px"
                   className="object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
             </div>
 
             <div className="group overflow-hidden bg-white shadow-sm">
-              <div className="relative h-[300px] md:h-[400px]">
+              <div className="relative h-75 md:h-100">
                 <Image
                   src="https://res.cloudinary.com/dvzxjqtub/image/upload/v1785953387/e2058f0b-cbf7-4951-b819-9e1fd27098b3_uvnskq.jpg"
                   alt="Custom Mug"
                   fill
+                  sizes="400px"
                   className="object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
