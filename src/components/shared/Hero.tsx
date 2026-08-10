@@ -1,155 +1,122 @@
-// "use client";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
-// import Image from "next/image";
-// import burger from "../../../public/burger.png";
-// import mug from "../../../public/mug.png";
+const RAINBOW_LETTERS: { char: string; color: string }[] = [
+  { char: "N", color: "#F5A623" },
+  { char: "V", color: "#EC4899" },
+  { char: "V", color: "#3B5BDB" },
+  { char: "\u00A0", color: "transparent" },
+  { char: "L", color: "#2FBF71" },
+  { char: "D", color: "#17A2A0" },
+  { char: "A", color: "#F5A623" },
+];
 
-// export default function HeroSection() {
-//   return (
-//     <section className="relative overflow-hidden"> 
-//       <div className="relative min-h-137.5 md:min-h-175 bg-linear-to-r from-pink-300 via-orange-300 to-pink-400">
-//         {/* Decorative Shapes */}
-//         <div className="absolute left-4 top-10 h-10 w-10 rotate-45 bg-white/70 md:left-20 md:top-24 md:h-16 md:w-16" />
+export default function Hero() {
+  return (
+    <section
+      className="relative overflow-hidden py-16 sm:py-20 lg:py-28"
+      style={{
+        backgroundColor: "#E4E0D6",
+        backgroundImage: `
+          repeating-linear-gradient(95deg, rgba(255,255,255,0.45) 0px, rgba(255,255,255,0.45) 1px, transparent 1px, transparent 3px),
+          linear-gradient(135deg, #F2EFE6 0%, #DAD5C8 45%, #C3BDAC 100%)
+        `,
+      }}
+    >
+      {/* vertical RGB bars, lifted from the test chart on the left of the window */}
+      <div className="absolute bottom-8 left-6 top-8 hidden w-10 gap-1 sm:flex">
+        <span className="flex-1 rounded-sm bg-[#1FA34C]" />
+        <span className="flex-1 rounded-sm bg-[#E31E24]" />
+        <span className="flex-1 rounded-sm bg-[#1B4FA0]" />
+      </div>
 
-//         <div className="absolute right-5 top-10 h-8 w-8 rounded-full border-12 border-yellow-400 border-b-transparent border-l-transparent md:right-32 md:top-16 md:h-10 md:w-10 md:border-20" />
+      <div className="relative mx-auto max-w-6xl px-4 sm:pl-24">
+        {/* oval badge, echoing the teal nameplate above your door */}
+        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/40 bg-linear-to-r from-[#0E7C82] to-[#1CA39C] px-4 py-1.5 shadow-[2px_2px_0_0_rgba(0,0,0,0.15)]">
+          <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-white/90">
+            Novos Suportes Publicitários, Lda
+          </span>
+        </div>
 
-//         <div className="absolute left-1/4 top-16 h-8 w-8 rounded-full border-4 border-white border-l-transparent border-b-transparent md:h-12 md:w-12 md:border-8" />
+        {/* storefront photo — static + centered on mobile, floats right from lg up */}
+        <div className="relative mx-auto mb-10 w-65 rotate-3 sm:w-75 lg:absolute lg:-right-6 lg:top-0 lg:mx-0 lg:mb-0 lg:w-85 xl:right-1 xl:w-[400px]">
+          <div className="overflow-hidden rounded-sm border-4 border-[#F2EFE6] shadow-[10px_10px_0_0_rgba(0,0,0,0.2)]">
+            <Image
+              src="https://res.cloudinary.com/dvzxjqtub/image/upload/v1786033824/WhatsApp_Image_2026-08-06_at_7.10.15_PM_onaxwv.jpg"
+              alt="NVV Lda shopfront with printed colour proof in the window"
+              width={800}
+              height={1000}
+              priority
+              className="h-80 w-full object-cover sm:h-90 lg:h-105 xl:h-125"
+            />
+          </div>
 
-//         <div className="absolute bottom-10 left-1/4 h-8 w-8 rounded-full border-10 border-yellow-400 border-t-transparent border-r-transparent md:h-12 md:w-12 md:border-16" />
+          {/* tape corner, matching the About section framing */}
+          <span
+            className="absolute -left-3 -top-3 z-10 h-5 w-16 rotate-[-9deg] border border-white/60"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(45deg, rgba(255,255,255,0.6) 0 2px, rgba(255,255,255,0.35) 2px 5px)",
+            }}
+          />
 
-//         {/* Left Image */}
-//         <div className="absolute -left-7.5 top-10 md:-left-5 md:top-28">
-//           <Image
-//             src={burger}
-//             alt="Printing Product"
-//             width={350}
-//             height={350}
-//             className="w-40 rotate-[-25deg] drop-shadow-2xl sm:w-45 md:w-65 lg:w-92.5"
-//           />
-//         </div>
+          {/* the real door number, tagged onto the photo */}
+          <span className="absolute -bottom-3 left-6 -rotate-2 rounded-sm bg-[#2FA84B] px-3 py-1 font-mono text-sm font-bold text-white shadow-[2px_2px_0_0_rgba(0,0,0,0.25)]">
+            31 A
+          </span>
+        </div>
 
-//         {/* Right Image */}
-//         <div className="absolute bottom-8 -right-6.25 md:bottom-auto md:right-5 md:top-60">
-//           <Image
-//             src={mug}
-//             alt="Printed Mug"
-//             width={320}
-//             height={320}
-//             className="w-37.5 rotate-12 drop-shadow-2xl sm:w-40 md:w-60 lg:w-87.5"
-//           />
-//         </div>
+        {/* glossy, extruded shop-sign lettering */}
+        <h1 className="flex flex-wrap text-6xl font-black uppercase leading-none tracking-tight sm:text-8xl lg:max-w-lg xl:max-w-xl">
+          {RAINBOW_LETTERS.map((l, i) => (
+            <span
+              key={i}
+              style={{
+                color: l.color,
+                textShadow:
+                  l.char === "\u00A0"
+                    ? undefined
+                    : "1px 1px 0 rgba(0,0,0,0.2), 2px 2px 0 rgba(0,0,0,0.2), 3px 3px 0 rgba(0,0,0,0.2), 4px 5px 8px rgba(0,0,0,0.35)",
+              }}
+            >
+              {l.char}
+            </span>
+          ))}
+        </h1>
 
-//         {/* Content */}
-//         <div className="container mx-auto flex min-h-137.5 md:min-h-175 items-center justify-center px-4">
-//           <div className="max-w-4xl text-center">
-//             <p className="mb-4 text-[10px] font-bold uppercase tracking-[3px] text-white sm:text-xs md:mb-6 md:text-sm md:tracking-[4px]">
-//               Private & Commercial Projects
-//             </p>
+        <p className="mt-6 max-w-md text-sm leading-relaxed text-[#33302A]/75">
+          Full-colour digital printing, signage, and advertising displays —
+          proofed and produced in-house, right down to the last swatch.
+        </p>
 
-//             <h1 className="mb-6 text-4xl font-extrabold leading-tight text-white sm:text-5xl md:mb-8 md:text-7xl md:leading-none">
-//               Your trusted 
-//               <br />
-//              Printing partner
-//             </h1>
+        {/* grayscale swatch row, standing in for a divider */}
+        <div className="mt-8 flex h-3 max-w-xs overflow-hidden rounded-sm shadow-inner">
+          {["#F5F3EF", "#D9D5CC", "#B8B3A8", "#948E80", "#6B6558", "#403C33"].map(
+            (c) => (
+              <span key={c} className="flex-1" style={{ backgroundColor: c }} />
+            )
+          )}
+        </div>
 
-//             <button className="rounded-full bg-white mt-4 px-6 py-3 text-sm font-semibold text-pink-500 transition hover:scale-105 md:px-10 md:py-4 md:text-base lg:mt-8">
-//               Let's Talk
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
+        <div className="mt-10 flex flex-wrap items-center gap-5">
+          <button className="group flex items-center gap-2 rounded-sm bg-[#151109] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-[#F7F3E9] shadow-[3px_3px_0_0_rgba(0,0,0,0.25)] transition-transform hover:-translate-y-0.5">
+            Get a Quote
+            <ArrowRight
+              size={16}
+              className="transition-transform group-hover:translate-x-0.5"
+            />
+          </button>
+        </div>
+      </div>
 
-
-
-// src/components/home/HeroSection.tsx
-
-// import Image from "next/image";
-// import Link from "next/link";
-
-// export default function HeroSection() {
-//   return (
-//     <section className="relative overflow-hidden">
-//       {/* Background Image */}
-//       <div className="relative h-[500px] md:h-[650px]">
-//         <Image
-//           src="https://res.cloudinary.com/dvzxjqtub/image/upload/v1786033816/WhatsApp_Image_2026-08-06_at_7.10.17_PM_o3tgvn.jpg"
-//           alt="Novos Suportes Publicitários"
-//           fill
-//           priority
-//           sizes="100vw"
-//           className="object-cover"
-//         />
-
-//         {/* Overlay */}
-//         <div className="absolute inset-0 bg-black/50" />
-
-//         {/* Content */}
-//         <div className="absolute inset-0 flex items-center">
-//           <div className="mx-auto w-full max-w-7xl px-6">
-//             <div className="max-w-2xl text-white">
-//               <span className="mb-4 inline-block rounded-full border border-yellow-500 px-4 py-2 text-sm font-medium text-yellow-400">
-//                 Professional Printing Solutions
-//               </span>
-
-//               <h1 className="mb-6 text-4xl font-bold leading-tight md:text-6xl">
-//                 Quality Printing That
-//                 <span className="block text-yellow-400">
-//                   Makes an Impression
-//                 </span>
-//               </h1>
-
-//               <p className="mb-8 text-lg text-gray-200 md:text-xl">
-//                 Large format printing, banners, signage, promotional materials,
-//                 business branding and custom printing solutions for your company.
-//               </p>
-
-//               <div className="flex flex-wrap gap-4">
-//                 <Link
-//                   href="/shop"
-//                   className="rounded-md bg-yellow-500 px-8 py-4 font-semibold text-black transition hover:bg-yellow-400"
-//                 >
-//                   Explore Products
-//                 </Link>
-
-//                 <Link
-//                   href="/contact"
-//                   className="rounded-md border border-white px-8 py-4 font-semibold text-white transition hover:bg-white hover:text-black"
-//                 >
-//                   Get Quote
-//                 </Link>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Bottom Stats */}
-//       <div className="bg-black py-8 text-white">
-//         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 md:grid-cols-4">
-//           <div>
-//             <h3 className="text-3xl font-bold text-yellow-400">10+</h3>
-//             <p>Years Experience</p>
-//           </div>
-
-//           <div>
-//             <h3 className="text-3xl font-bold text-yellow-400">500+</h3>
-//             <p>Projects Completed</p>
-//           </div>
-
-//           <div>
-//             <h3 className="text-3xl font-bold text-yellow-400">100%</h3>
-//             <p>Quality Printing</p>
-//           </div>
-
-//           <div>
-//             <h3 className="text-3xl font-bold text-yellow-400">24/7</h3>
-//             <p>Customer Support</p>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
+      {/* horizontal CMYK bars, lifted from the panel bottom-right of the door */}
+      <div className="mx-auto mt-16 max-w-6xl px-4 sm:pl-24">
+        <div className="max-w-xs overflow-hidden rounded-sm shadow-[2px_2px_0_0_rgba(0,0,0,0.15)]">
+          <div className="h-3 bg-[#EC008C]" />
+          <div className="h-3 bg-[#00AEEF]" />
+          <div className="h-3 bg-[#FFE800]" />
+        </div>
+      </div>
+    </section>
+  );
+}

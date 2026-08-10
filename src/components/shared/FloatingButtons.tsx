@@ -31,7 +31,7 @@ export default function FloatingButtons() {
         href="https://wa.me/351920222463"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-[999] flex h-14 w-14 items-center justify-center rounded-full bg-green-500 shadow-xl transition hover:scale-110"
+        className="fixed bottom-10 right-5 z-99 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 shadow-xl transition hover:scale-110"
         aria-label="WhatsApp"
       >
         <svg
@@ -48,7 +48,7 @@ export default function FloatingButtons() {
         <button
           onClick={scrollToTop}
           aria-label="Back to top"
-          className="fixed bottom-6 right-6 z-[999] flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500 text-black shadow-xl transition hover:scale-110"
+          className="fixed -bottom-3 right-6 z-99 flex h-12 w-12 items-center justify-center rounded-full cursor-pointer bg-yellow-500 text-black shadow-xl transition hover:scale-110"
         >
           <ChevronUp size={24} />
         </button>
