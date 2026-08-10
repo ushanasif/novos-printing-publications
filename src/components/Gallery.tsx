@@ -5,7 +5,7 @@ import Image from "next/image";
 const galleryItems = [
   {
     src: "https://res.cloudinary.com/dvzxjqtub/image/upload/v1786037761/059a234f-2313-4c20-a47b-39f833dc94ee-removebg-preview_1_rdxjpt.png",
-    title: "Food Box Printing",
+    title: "Food Box",
   },
   {
     src: "https://res.cloudinary.com/dvzxjqtub/image/upload/v1785954712/3f1b7549-821f-4d75-ad7d-de95e10a574f-removebg-preview_q9w6pe.png",
@@ -31,7 +31,7 @@ const galleryItems = [
 
 export default function GallerySection() {
   return (
-    <section id="gallery" className="bg-[#F7F3E9] px-4 py-20 sm:px-6 lg:px-8">
+    <section id="gallery" className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-14">

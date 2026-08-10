@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-[#F7F3E9] px-6 py-24 lg:px-12"
+      className="px-6 py-24 lg:px-12"
     >
       <div className="mx-auto max-w-7xl">
         {/* Top Line */}

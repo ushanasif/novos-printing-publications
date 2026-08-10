@@ -12,20 +12,20 @@ import {
 } from "lucide-react";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
+  { name: "Home", href: "/" },
   { name: "About", href: "#about" },
   { name: "Shop", href: "#gallery" },
   { name: "Contact", href: "#contact" },
 ];
 
-export default function HeaderSecond() {
+export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       {/* Top Bar */}
       <div className="sticky top-0 z-50 bg-[#fd918c] text-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
           {/* Desktop Social Icons */}
           <div className="hidden lg:flex items-center gap-4">
             <Link href="#">

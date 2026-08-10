@@ -1,8 +1,8 @@
 
-import About from '@/components/shared/About'
-import Contact from '@/components/shared/Contact'
-import GallerySection from '@/components/shared/Gallery'
-import HeroSection from '@/components/shared/Hero'
+import About from '@/components/About'
+import Contact from '@/components/Contact'
+import GallerySection from '@/components/Gallery'
+import HeroSection from '@/components/Hero'
 
 
 const Home = () => {
@@ -20,7 +20,6 @@ const Home = () => {
       <section id='contact'>
           <Contact />
       </section>
-      
     </>
   )
 }

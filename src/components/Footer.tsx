@@ -5,14 +5,7 @@ export default function Footer() {
     <footer className="bg-[#151109] text-white">
       <div className="mx-auto max-w-7xl px-4">
         {/* Perforated Tear Line */}
-        <div className="flex justify-between overflow-hidden py-3">
-          {Array.from({ length: 40 }).map((_, i) => (
-            <span
-              key={i}
-              className="h-3 w-3 rounded-full bg-[#F7F3E9]"
-            />
-          ))}
-        </div>
+        
 
         {/* Bottom */}
         <div className="flex flex-col items-center justify-between gap-3 pb-4 pt-4 md:flex-row">
