@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <>
       {/* Top Bar */}
-      <div className="sticky top-0 z-50 bg-[#fd918c] text-white">
+      <div className="sticky top-0 z-50 bg-[#f7564e] text-white"> 
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
           {/* Desktop Social Icons */}
           <div className="hidden lg:flex items-center gap-4">
@@ -60,7 +60,7 @@ export default function Header() {
           {/* Mobile Layout */}
           <div className="flex flex-1 items-center justify-between lg:flex-none">
             {/* Contact Info */}
-            <div className="flex flex-col gap-2 text-md sm:text-md md:text-base lg:flex-row lg:items-center lg:gap-4">
+            <div className="flex flex-col gap-2 font-bold md:font-normal text-md sm:text-md md:text-base lg:flex-row lg:items-center lg:gap-4">
               <div className="flex items-center gap-2">
                 <Phone size={14} />
                 <span>+351 920 222 463</span>
